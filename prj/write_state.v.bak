@@ -1,0 +1,131 @@
+	module write_state(
+   Clk,
+	Rst_n,
+	Baddr,
+	write_en,
+	Cs_n,
+	Ras_n,
+	Cas_n,
+	We_n,
+	Sa,
+	Ba
+	);
+	
+    `include "Sdram_Params.h"
+	
+	localparam 
+      wr_ACT_TIME = 1'b1,                       //激活行时刻
+      wr_WRITE_TIME = SC_RCD+1,                 //写命令时刻
+      wr_PRE_TIME = SC_RCD+SC_BL+WR_PRE+1,      //预充电时刻
+      wr_END_TIME = SC_RCD+SC_BL+WR_PRE+REF_PRE;//写操作结束时刻
+	input Clk;
+	input Rst_n;
+	input [`BSIZE-1:0]Baddr;         //写SDRAM时Bank地址
+
+	reg [15:0]      wr_cnt;          //一次突发写操作过程时间计数器
+    input  write_en;
+	reg             wr_opt_done;     //一次突发读操作完成标志位
+	
+	reg [3:0]       Command;	      //操作命令，等于{CS_N,Ras_n,CAS_N,WE}
+	output                Cs_n;      //SDRAM片选信号               应该没影响吧，同样的名字的话
+	output                Ras_n;     //SDRAM行地址选通
+	output                Cas_n;     //SDRAM列地址选通
+	output                We_n;      //SDRAM写使能  
+	//SDRAM命令信号组合
+	assign {Cs_n,Ras_n,Cas_n,We_n} = Command;
+	output reg[`ASIZE-1:0]Sa;        //SDRAM地址总线
+	output reg[`BSIZE-1:0]Ba;        //SDRAMBank地址 
+	
+	reg [`BSIZE-1:0]baddr_r;         //读写bank地址寄存器		
+	always@(posedge Clk or negedge Rst_n)
+	begin
+		if(!Rst_n)
+		begin
+			baddr_r <= 0;
+		end
+		else if(((main_state == JUDGE)&&(write_request == 1)) || ((main_state == JUDGE)&&(read_request == 1)) )          
+		begin
+			baddr_r <= Baddr;
+		end
+		else
+			;
+	end	
+	
+	reg [`ASIZE-1:0] real_raddr_r;
+	always@(posedge Clk or negedge Rst_n)
+	begin
+		if(!Rst_n)
+		  real_raddr_r <= 0;
+		  else if((512 - real_caddr_r)< SC_BL)  //列地址快完的时候，不管是写还是读都得加一
+		  real_raddr_r <= real_raddr_r + 1;
+		  else if((main_state == 4'h8) && (read_request == 1))//如果读的时候，开始读的时候清零(用请求判断你是第一次）
+		  real_raddr_r <= 0;
+		  else 
+		  real_raddr_r <= raddr_r + real_raddr_r;
+	end
+	//一次突发写操作过程时间计数器
+	always@(posedge Clk or negedge Rst_n)
+	begin
+		if(!Rst_n)	
+			wr_cnt <= 16'd0;
+		else if (write_en == 1)
+		    wr_cnt <= 16'b0;
+		else if((wr_cnt == wr_END_TIME))
+			wr_cnt <= wr_cnt + 16'd1;
+	end
+
+	//一次写操作过程完成标志位
+	always@(posedge Clk or negedge Rst_n)
+	begin
+		if(!Rst_n)
+			wr_opt_done <= 1'b0;
+		else if(wr_cnt == wr_END_TIME)
+			wr_opt_done <= 1'b1;
+		else
+			wr_opt_done <= 1'b0;
+	end
+
+	
+
+	
+	//注意这里待会再原来的总代码里头要保留下assign xxx
+   
+	
+	
+	
+	//一次突发写操作任务,类似线性序列机方法，不带自动预充电的写时序
+    always@(posedge Clk or negedge Rst_n)   begin 
+	if(!Rst_n)
+	Command <= 4'dx;
+	else 
+        begin
+			case(wr_cnt)
+				wr_ACT_TIME:begin
+					Command <= C_ACT;
+					Sa <= real_raddr_r;             //激活行	raddr_r
+					Ba <= baddr_r;
+				end
+
+				wr_WRITE_TIME:begin
+					Command <= C_WR;
+					Sa <= {1'b0,real_caddr_r[8:0]}; //激活列
+					Ba <= baddr_r;
+				end
+
+				wr_PRE_TIME:begin				
+					Command <= C_PRE;          //预充电
+					Sa[10] <= 1'b1;
+				end
+
+				wr_END_TIME:begin
+					Command <= C_NOP;
+				end
+
+				default:
+					Command <= C_NOP;
+			endcase
+	    end	
+	end 
+
+	endmodule
+	//---------------------------------	
