@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sat Jul 13 09:25:19 2019
+Fitter Status : Successful - Sat Jul 13 11:52:49 2019
 Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Full Version
 Revision Name : sdram
 Top-level Entity Name : sdram_control_top
 Family : Cyclone IV E
 Device : EP4CE55F29I8L
 Timing Models : Final
-Total logic elements : 965 / 55,856 ( 2 % )
-    Total combinational functions : 866 / 55,856 ( 2 % )
+Total logic elements : 969 / 55,856 ( 2 % )
+    Total combinational functions : 865 / 55,856 ( 2 % )
     Dedicated logic registers : 519 / 55,856 ( < 1 % )
 Total registers : 519
 Total pins : 193 / 375 ( 51 % )

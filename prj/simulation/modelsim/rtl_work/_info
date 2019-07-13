@@ -7,7 +7,7 @@ vauto_refre_state
 I>I;lc8idif=:LSM>2NH3g2
 VhZ]6P2jF^lLzdUR48fPeU1
 Z1 dD:\fpga_prj\sdram_three_version\prj\simulation\modelsim
-Z2 w1562893927
+Z2 w1562987614
 8D:/fpga_prj/sdram_three_version/prj/auto_refre_state.v
 FD:/fpga_prj/sdram_three_version/prj/auto_refre_state.v
 Z3 FSdram_Params.h
@@ -20,7 +20,7 @@ Z6 !s92 -vlog01compat -work work +incdir+D:/fpga_prj/sdram_three_version/prj -O0
 !i10b 1
 !s100 Sh2c39LCCnHo7[`6AHT[`3
 !s85 0
-!s108 1562982002.556000
+!s108 1563010924.655000
 !s107 Sdram_Params.h|D:/fpga_prj/sdram_three_version/prj/auto_refre_state.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/auto_refre_state.v|
 !s101 -O0
@@ -28,7 +28,7 @@ vfifo_rd
 Ih_`8^RPzjB718TLmjonb>2
 V@R3mKc7]_8_^Hg1I]1^aA1
 R1
-w1562497790
+R2
 8D:/fpga_prj/sdram_three_version/ip/fifo_rd.v
 FD:/fpga_prj/sdram_three_version/ip/fifo_rd.v
 L0 39
@@ -40,7 +40,7 @@ Z7 !s92 -vlog01compat -work work +incdir+D:/fpga_prj/sdram_three_version/ip -O0
 !i10b 1
 !s100 lG5:dnHEdGTa5>UR8SBU]1
 !s85 0
-!s108 1562982000.339000
+!s108 1563010922.704000
 !s107 D:/fpga_prj/sdram_three_version/ip/fifo_rd.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/ip|D:/fpga_prj/sdram_three_version/ip/fifo_rd.v|
 !s101 -O0
@@ -48,7 +48,7 @@ vfifo_wr
 IzdY[GoGHh[FH1ZLUPbmbe2
 V`=Y^>@V<6jkb09dEJH^Sf0
 R1
-w1562497648
+R2
 8D:/fpga_prj/sdram_three_version/ip/fifo_wr.v
 FD:/fpga_prj/sdram_three_version/ip/fifo_wr.v
 L0 39
@@ -60,7 +60,7 @@ R7
 !i10b 1
 !s100 UTZSTObeCjZUK1zl`68VQ2
 !s85 0
-!s108 1562981999.830000
+!s108 1563010922.314000
 !s107 D:/fpga_prj/sdram_three_version/ip/fifo_wr.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/ip|D:/fpga_prj/sdram_three_version/ip/fifo_wr.v|
 !s101 -O0
@@ -68,7 +68,7 @@ vread_state
 ImPcgGSn2e4UX>bUPLGc3C0
 VC3@W@Nh2fFIJI<Ia9Zf2R2
 R1
-w1562905039
+Z8 w1562987615
 8D:/fpga_prj/sdram_three_version/prj/read_state.v
 FD:/fpga_prj/sdram_three_version/prj/read_state.v
 R3
@@ -81,7 +81,7 @@ R6
 !i10b 1
 !s100 @KJ03LCjB@`3[QV:1h;DX3
 !s85 0
-!s108 1562982003.687000
+!s108 1563010925.425000
 !s107 Sdram_Params.h|D:/fpga_prj/sdram_three_version/prj/read_state.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/read_state.v|
 !s101 -O0
@@ -91,7 +91,7 @@ vsdr
 I^:2L27?`>Z?H<j?5B`b[;2
 V9DeganSRm<oX>9c1X]:O@3
 R1
-w1562499125
+R8
 8D:/fpga_prj/sdram_three_version/prj/sdr.v
 FD:/fpga_prj/sdram_three_version/prj/sdr.v
 Fsdr_parameters.h
@@ -100,7 +100,7 @@ R4
 r1
 !s85 0
 31
-!s108 1562982004.965000
+!s108 1563010926.175000
 !s107 sdr_parameters.h|D:/fpga_prj/sdram_three_version/prj/sdr.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/sdr.v|
 !s101 -O0
@@ -110,7 +110,7 @@ vsdram_control
 I0MfHBoW;6zM]2XKZ>M4mS1
 VXaXS9DFNO4fC_B<B:`QI?0
 R1
-w1562932773
+w1563010917
 8D:/fpga_prj/sdram_three_version/prj/sdram_control.v
 FD:/fpga_prj/sdram_three_version/prj/sdram_control.v
 R3
@@ -123,15 +123,15 @@ R6
 !i10b 1
 !s100 _o@dJP?4D]LcJ49IRK>[b0
 !s85 0
-!s108 1562982001.910000
+!s108 1563010924.135000
 !s107 Sdram_Params.h|D:/fpga_prj/sdram_three_version/prj/sdram_control.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/sdram_control.v|
 !s101 -O0
 vsdram_control_top
-IF36]?D0<zN3Zzi7LVB_`l2
+ILJa_>Z_`kJcNg^NkhenYo2
 VoO9YM[U78nL5a1eQDK7Id2
 R1
-w1562939175
+w1562989712
 8D:/fpga_prj/sdram_three_version/prj/sdram_control_top.v
 FD:/fpga_prj/sdram_three_version/prj/sdram_control_top.v
 R3
@@ -142,17 +142,17 @@ r1
 R5
 R6
 !i10b 1
-!s100 A3V1n2[HL[@[G0g@ZbS?R0
+!s100 T^Oj7m]DcEQ;`Q;;1m=Oh3
 !s85 0
-!s108 1562982001.365000
+!s108 1563010923.601000
 !s107 Sdram_Params.h|D:/fpga_prj/sdram_three_version/prj/sdram_control_top.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/sdram_control_top.v|
 !s101 -O0
 vsdram_control_top_tb
-IBOH4ZCi70N3fHYj@[hk0M0
+ITT4M8kKTkMSSV5mZX8?2e2
 VFi6zj]?md[[Q=WbJg6<I?3
 R1
-w1562939646
+w1563010538
 8D:/fpga_prj/sdram_three_version/prj/sdram_control_top_tb.v
 FD:/fpga_prj/sdram_three_version/prj/sdram_control_top_tb.v
 R3
@@ -163,9 +163,9 @@ r1
 R5
 R6
 !i10b 1
-!s100 R:6j6QS8m0Xk6NFYYNJAg1
+!s100 kDLKEA:olUNNWNBSiC0EO0
 !s85 0
-!s108 1562982004.274000
+!s108 1563010925.775000
 !s107 Sdram_Params.h|D:/fpga_prj/sdram_three_version/prj/sdram_control_top_tb.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/sdram_control_top_tb.v|
 !s101 -O0
@@ -173,7 +173,7 @@ vsdram_init
 I3MQQ>HHSd`PP>WgZ:04hN1
 VJ4o?P>5FzThB^M;;92KR=2
 R1
-R2
+R8
 8D:/fpga_prj/sdram_three_version/prj/sdram_init.v
 FD:/fpga_prj/sdram_three_version/prj/sdram_init.v
 R3
@@ -186,15 +186,15 @@ R6
 !i10b 1
 !s100 U<hl1MTTR4MlnP>DD1RNJ1
 !s85 0
-!s108 1562982000.807000
+!s108 1563010923.129000
 !s107 Sdram_Params.h|D:/fpga_prj/sdram_three_version/prj/sdram_init.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/sdram_init.v|
 !s101 -O0
 vwrite_state
-IS=kiGVI>>8AAV[_TKC7:l3
+Ii09>gCY>^A?<>QMEl=L>Y2
 VeCRhze:93_AfigAH1]>7A3
 R1
-w1562981992
+R8
 8D:/fpga_prj/sdram_three_version/prj/write_state.v
 FD:/fpga_prj/sdram_three_version/prj/write_state.v
 R3
@@ -205,9 +205,9 @@ r1
 R5
 R6
 !i10b 1
-!s100 =X@@=Aeb8O8@P<6C<6e7W0
+!s100 WhZkW?jaGORe[215?zO;B3
 !s85 0
-!s108 1562982003.218000
+!s108 1563010925.075000
 !s107 Sdram_Params.h|D:/fpga_prj/sdram_three_version/prj/write_state.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/fpga_prj/sdram_three_version/prj|D:/fpga_prj/sdram_three_version/prj/write_state.v|
 !s101 -O0

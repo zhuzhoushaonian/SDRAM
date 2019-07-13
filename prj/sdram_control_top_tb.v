@@ -20,11 +20,7 @@ module sdram_control_top_tb;
    reg					Rd_load;
    reg					Rd_clk;
 
-	//reg                  sd_wr;          //閸愭┎DRAM娴ｈ儻鍏樻穱鈥冲娇
-	//reg                  sd_rd;          //鐠囩睏DRAM娴ｈ儻鍏樻穱鈥冲娇
-	//reg   [`ASIZE-1:0]   sd_caddr;       //閸愭┎DRAM閺冭泛鍨崷鏉挎絻
-	//reg   [`ASIZE-1:0]   sd_raddr;       //閸愭┎DRAM閺冩儼顢戦崷鏉挎絻
-	//reg   [`BSIZE-1:0]   sd_baddr;       //閸愭┎DRAM閺冪ank閸︽澘娼?
+
 	
 	wire[`ASIZE-1:0]  Sa;
 	wire[`BSIZE-1:0]  Ba;
@@ -37,9 +33,7 @@ module sdram_control_top_tb;
 	wire[`DSIZE/8-1:0]Dqm;
 
 	wire sdram_clk;
-	//wire  [3:0]       main_state;      //娑撹崵濮搁幀浣哥槑鐎涙ê娅?
-  // wire [2:0] request_total;
-	//SDRAM閺冨爼鎸撴穱鈥冲娇
+	
 	assign sdram_clk = ~Clk;
 
 	sdram_control_top sdram_control_top(
@@ -74,17 +68,7 @@ module sdram_control_top_tb;
 		.We_n(We_n),
 		.Dq(Dq),
 		.Dqm(Dqm)
-		//.main_state(main_state),
-		
-	   //.sd_wr(sd_wr),          //閸愭┎DRAM娴ｈ儻鍏樻穱鈥冲娇
-     // .sd_rd(sd_rd),   //鐠囩睏DRAM娴ｈ儻鍏樻穱鈥冲娇
-     // .sd_caddr(sd_caddr),       //閸愭┎DRAM閺冭泛鍨崷鏉挎絻
-     // .sd_raddr(sd_raddr),       //閸愭┎DRAM閺冩儼顢戦崷鏉挎絻
-     // .sd_baddr(sd_baddr),    //閸愭┎DRAM閺冪ank閸︽澘娼?
-		//.request_total(request_total),
-		//.Dq_bottom(Dq_bottom)
-	//.Wdata_done(Wdata_done),   //娑撯偓濞嗏€冲晸鐎瑰本鍨氶惃鍕崐閸欐垿鏆辨惔锔炬畱閺嶅洤绻旀担
-	//.Rdata_done(Rdata_done)
+	
 	);
 
 	//SDRAM濡€崇€锋笟瀣
@@ -98,9 +82,8 @@ module sdram_control_top_tb;
 		.Ras_n(Ras_n),
 		.Cas_n(Cas_n),
 		.We_n(We_n),
-		.Dqm(Dqm),
-		.real_raddr_r(real_raddr_r)
-	);
+		.Dqm(Dqm)
+		);
 
 	//SDRAM閹貉冨煑閸ｃ劍妞傞柦
 	initial Clk = 1'b1;
@@ -125,15 +108,12 @@ module sdram_control_top_tb;
 		Wr_load = 0;
 		Rd_load = 0;
 		
-     // sd_wr = 0;          //閸愭┎DRAM娴ｈ儻鍏樻穱鈥冲娇
-	  // sd_rd = 0;          //鐠囩睏DRAM娴ｈ儻鍏樻穱鈥冲娇
-	 //  sd_caddr = 0;       //閸愭┎DRAM閺冭泛鍨崷鏉挎絻
-	 //  sd_raddr = 0;       //閸愭┎DRAM閺冩儼顢戦崷鏉挎絻
-	 //  sd_baddr = 0;       //閸愭┎DRAM閺冪ank閸︽澘娼?
+
 		@(posedge sdram_control_top.sdram_control.init_done)
 		#2000;
 
-		//鐠囪鍟撻弫鐗堝祦閿涘苯鍘涘鈧崥顖濆厴婢剁喕顕伴崘姗FO閿涘苯顕甋DRAM閺嗗倹妞傛潻妯荤梾瀵偓闁?		Wr_en   = 1;
+		//鐠囪鍟撻弫鐗堝祦閿涘苯鍘涘鈧崥顖濆厴婢剁喕顕伴崘姗FO閿涘苯顕甋DRAM閺嗗倹妞傛潻妯荤梾瀵偓闁?		
+		Wr_en   = 1;
 		Rd_en   = 0;   
 		
 		//瀵偓闁艾顕甋DRAM閻ㄥ嫭鎼锋担婊€绨?

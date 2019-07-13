@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Failed - Sat Jul 13 10:29:23 2019
+Analysis & Synthesis Status : Successful - Sat Jul 13 11:51:57 2019
 Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Full Version
 Revision Name : sdram
 Top-level Entity Name : sdram_control_top
 Family : Cyclone IV E
-Total logic elements : N/A until Partition Merge
-    Total combinational functions : N/A until Partition Merge
-    Dedicated logic registers : N/A until Partition Merge
-Total registers : N/A until Partition Merge
-Total pins : N/A until Partition Merge
-Total virtual pins : N/A until Partition Merge
-Total memory bits : N/A until Partition Merge
-Embedded Multiplier 9-bit elements : N/A until Partition Merge
-Total PLLs : N/A until Partition Merge
+Total logic elements : 996
+    Total combinational functions : 865
+    Dedicated logic registers : 519
+Total registers : 519
+Total pins : 193
+Total virtual pins : 0
+Total memory bits : 6,144
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

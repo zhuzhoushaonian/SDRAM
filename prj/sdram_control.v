@@ -98,7 +98,7 @@ module sdram_control(
 	wire we_n_ref;
 	wire we_n_write;
 	reg [`ASIZE-1:0] real_caddr_r;  
-	//reg [`ASIZE-1:0] real_raddr_r;
+	reg [`ASIZE-1:0] real_raddr_r;
 
 	localparam 
 		JUDGE  = 4'b0001,  //仲裁状态
@@ -137,10 +137,9 @@ module sdram_control(
 	.We_n(we_n_write),
 	.Sa(Sa_write),
 	.Ba(Ba_write),
-	.real_raddr_rr(raddr_r),
-	//.real_raddr_rr(real_raddr_r),
-	.real_caddr_rr(real_caddr_r),  
-   .wr_opt_done(wr_opt_done),
+	.real_raddr_rr(real_raddr_r),
+	.real_caddr_rr(real_caddr_r),
+    .wr_opt_done(wr_opt_done),
 	.Wr_data_vaild(Wr_data_vaild),
 	.Wdata_done(Wdata_done)
 	);
@@ -162,8 +161,7 @@ module sdram_control(
 	.Sa(Sa_read),
 	.Ba(Ba_read),
 	.read_en(read_en),
-	//.real_raddr_rr(real_raddr_r),
-    .real_raddr_rr(raddr_r),	
+	.real_raddr_rr(real_raddr_r),
 	.real_caddr_rr(real_caddr_r),
 	.Rd_data_vaild(Rd_data_vaild),  //暂时没有什么用，不过待会用到了FIFO的时候就有用了
 	.Rdata_done(Rdata_done)
@@ -424,15 +422,15 @@ module sdram_control(
 
 	//我还是想不到办法解决，我写入数据在后头，然后接下来读出数据前头，然后我接下里再写入，那么应该是从前头写入还是下一行另起写入呢，如何判断数据存储是否为空？
 	//你这个是持续的写入读出超出过一个突发长度的思考
-	//always@(posedge Clk or negedge Rst_n)
-	//begin
-	//	if(!Rst_n)
-	//	  real_raddr_r <= 0;
-	//    else if((512 - real_caddr_r)< SC_BL)  //一行（列数）快完的时候，则另起一行，行标志位加一，但末尾剩下数据还是会读写出（一次性读写出突发长度的数据嘛）
-	//    real_raddr_r <= real_raddr_r + 1;
-	//	else 
-	//	real_raddr_r <= raddr_r;
-	//end
+	always@(posedge Clk or negedge Rst_n)
+	begin
+		if(!Rst_n)
+		  real_raddr_r <= 0;
+	    else if((512 - real_caddr_r)< SC_BL)  //一行（列数）快完的时候，则另起一行，行标志位加一，但末尾剩下数据还是会读写出（一次性读写出突发长度的数据嘛）
+	    real_raddr_r <= real_raddr_r + 1;
+		else 
+		real_raddr_r <= raddr_r;
+	end
 	
 	always@(posedge Clk or negedge Rst_n)
 	begin

@@ -32,7 +32,7 @@ module sdram_control_top(
 	Cas_n,
 	We_n,
 	Dq,
-	Dqm,
+	Dqm
 	//main_state,
    // sd_wr,         //写SDRAM使能信号
   //  sd_rd,         //读SDRAM使能信号
@@ -42,7 +42,7 @@ module sdram_control_top(
 	// request_total
     //Wdata_done,   //一次写完成的突发长度的标志位
     //Rdata_done
-	real_raddr_r 
+	 
 );
 
 `include        "Sdram_Params.h"
@@ -88,7 +88,7 @@ module sdram_control_top(
 	reg                  sd_wr;          //写SDRAM使能信号
 	reg                  sd_rd;          //读SDRAM使能信号
 	reg   [`ASIZE-1:0]   sd_caddr;       //写SDRAM时列地址
-	reg   [`ASIZE-1:0]   sd_raddr_no_add_sc;       //写SDRAM时行地址
+	reg   [`ASIZE-1:0]   sd_raddr;       //写SDRAM时行地址
 	reg   [`BSIZE-1:0]   sd_baddr;       //写SDRAM时Bank地址
 	
 	wire [`DSIZE-1:0]   sd_wr_data;     //待写入SDRAM数据
@@ -104,14 +104,13 @@ module sdram_control_top(
 	// wire                sd_wr_req;      //请求写数据到SDRAM      
 	// wire                sd_rd_req;      //请求向SDRAM读数据
   //  wire [`DSIZE-1:0] real_Dq;
-	output reg  [`ASIZE-1:0] real_raddr_r;
 
 	//SDRAM控制器模块例化
 	sdram_control sdram_control(
 	.Cke(Cke),    //SDRAM时钟使能
 	.Ba(Ba),        //SDRAMBank地址 
     .Caddr(sd_caddr),       //写SDRAM时列地址
-	.Raddr(real_raddr_r),        //写SDRAM时行地址
+	.Raddr(sd_raddr),        //写SDRAM时行地址
 	.Baddr(sd_baddr),        //写SDRAM时Bank地址
 	.Dqm(Dqm),      //SDRAM数据掩码
 	.Clk(Clk),          //系统时钟信号
@@ -242,25 +241,25 @@ module sdram_control_top(
 	always@(*)
 	begin
 		if(!Rst_n)
-			sd_raddr_no_add_sc = 13'd0;
+			sd_raddr = 13'd0;
 		else if(sd_wr_req)
-			sd_raddr_no_add_sc = wr_sdram_addr[21:9];
+			sd_raddr = wr_sdram_addr[21:9];
 		else if(sd_rd_req)
-			sd_raddr_no_add_sc = rd_sdram_addr[21:9];
+			sd_raddr = rd_sdram_addr[21:9];
 		else
-			sd_raddr_no_add_sc = sd_raddr_no_add_sc;
+			sd_raddr = sd_raddr;
 	end
 
-	//我来进行增加突发长度的编写了
-	always@(posedge Clk or negedge Rst_n)
-	begin
-		if(!Rst_n)
-		real_raddr_r <= 0;
-	    else if((512 - real_caddr_r)< SC_BL)  //一行（列数）快完的时候，则另起一行，行标志位加一，但末尾剩下数据还是会读写出（一次性读写出突发长度的数据嘛）
-	    real_raddr_r <= sd_raddr_no_add_sc + 1;
-		else 
-		real_raddr_r <= sd_raddr_no_add_sc;
-	end
+	////我来进行增加突发长度的编写了
+	//always@(posedge Clk or negedge Rst_n)
+	//begin
+	//	if(!Rst_n)
+	//	real_raddr_r <= 0;
+	//    else if((512 - real_caddr_r)< SC_BL)  //一行（列数）快完的时候，则另起一行，行标志位加一，但末尾剩下数据还是会读写出（一次性读写出突发长度的数据嘛）
+	//    real_raddr_r <= sd_raddr_no_add_sc + 1;
+	//	else 
+	//	real_raddr_r <= sd_raddr_no_add_sc;
+	//end
 	
 	always@(*)
 	begin

@@ -1,5 +1,5 @@
 Flow report for sdram
-Sat Jul 13 10:29:23 2019
+Sat Jul 13 11:52:50 2019
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -40,22 +40,22 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Flow Failed - Sat Jul 13 10:29:23 2019      ;
+; Flow Status                        ; Successful - Sat Jul 13 11:52:49 2019       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; sdram                                       ;
 ; Top-level Entity Name              ; sdram_control_top                           ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE55F29I8L                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 969 / 55,856 ( 2 % )                        ;
+;     Total combinational functions  ; 865 / 55,856 ( 2 % )                        ;
+;     Dedicated logic registers      ; 519 / 55,856 ( < 1 % )                      ;
+; Total registers                    ; 519                                         ;
+; Total pins                         ; 193 / 375 ( 51 % )                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 6,144 / 2,396,160 ( < 1 % )                 ;
+; Embedded Multiplier 9-bit elements ; 0 / 308 ( 0 % )                             ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/13/2019 10:29:23 ;
+; Start date & time ; 07/13/2019 11:51:45 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; sdram               ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------+---------------+-------------------+----------------------+
 ; Assignment Name                      ; Value                           ; Default Value ; Entity Name       ; Section Id           ;
 +--------------------------------------+---------------------------------+---------------+-------------------+----------------------+
-; COMPILER_SIGNATURE_ID                ; 184849018669864.156298496303104 ; --            ; --                ; --                   ;
+; COMPILER_SIGNATURE_ID                ; 184849018669864.156298990509056 ; --            ; --                ; --                   ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                              ; --            ; --                ; sdram_init_tb        ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                              ; --            ; --                ; sdram_control_tb     ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                              ; --            ; --                ; sdram_control_top_tb ;
@@ -123,8 +123,9 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 4597 MB             ; 00:00:01                           ;
-; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4643 MB             ; 00:00:04                           ;
+; Fitter               ; 00:00:46     ; 1.4                     ; 5257 MB             ; 00:00:35                           ;
+; Total                ; 00:00:55     ; --                      ; --                  ; 00:00:39                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -134,6 +135,7 @@ applicable agreement for further details.
 ; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +----------------------+------------------+-----------+------------+----------------+
 ; Analysis & Synthesis ; DESKTOP          ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter               ; DESKTOP          ; Windows 7 ; 6.2        ; x86_64         ;
 +----------------------+------------------+-----------+------------+----------------+
 
 
@@ -141,6 +143,7 @@ applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off sdram -c sdram
+quartus_fit --read_settings_files=on --write_settings_files=off sdram -c sdram
 
 
 
